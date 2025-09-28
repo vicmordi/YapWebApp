@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yap</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Yap</h1>
+      <button id="logoutBtn" class="link-button">Logout</button>
+    </header>
+    <main id="app"></main>
+
+    <template id="auth-template">
+      <section class="card auth-card">
+        <div class="tabs">
+          <button data-tab="login" class="tab active">Login</button>
+          <button data-tab="register" class="tab">Register</button>
+        </div>
+        <form id="loginForm" class="form visible" autocomplete="on">
+          <label>Email<input type="email" name="email" required /></label>
+          <label>Password<input type="password" name="password" required minlength="8" /></label>
+          <button type="submit" class="primary">Login</button>
+        </form>
+        <form id="registerForm" class="form" autocomplete="on">
+          <label>Email<input type="email" name="email" required /></label>
+          <label>Display name<input type="text" name="displayName" required minlength="2" /></label>
+          <label>Password<input type="password" name="password" required minlength="8" /></label>
+          <button type="submit" class="primary">Register</button>
+        </form>
+        <p class="status" id="authStatus"></p>
+      </section>
+    </template>
+
+    <template id="profile-template">
+      <section class="card profile-card">
+        <h2>Your Profile</h2>
+        <div class="profile-image">
+          <img id="profileImage" alt="Profile" />
+          <button id="changePhoto" class="secondary">Change photo</button>
+          <input type="file" id="profileImageInput" accept="image/*" hidden />
+        </div>
+        <form id="profileForm" class="form">
+          <label>Display name<input type="text" name="displayName" required /></label>
+          <label>Interests (comma separated)<input type="text" name="interests" placeholder="coffee, hiking" /></label>
+          <button type="submit" class="primary">Save profile</button>
+        </form>
+        <p class="status" id="profileStatus"></p>
+        <button id="toMatch" class="primary subtle">Find a match</button>
+      </section>
+    </template>
+
+    <template id="match-template">
+      <section class="card match-card">
+        <h2>Find someone to yap with</h2>
+        <div id="matchContent" class="match-content">
+          <p>Tap the button to discover a new partner.</p>
+        </div>
+        <button id="findMatch" class="primary">Find match</button>
+        <button id="backToProfile" class="secondary">Back to profile</button>
+        <p class="status" id="matchStatus"></p>
+      </section>
+    </template>
+
+    <template id="chat-template">
+      <section class="chat-view">
+        <header class="chat-header">
+          <button id="chatBack" class="link-button">←</button>
+          <div class="partner-info">
+            <img id="chatPartnerImage" alt="Partner" />
+            <div>
+              <h2 id="chatPartnerName"></h2>
+              <p id="chatPartnerInterests"></p>
+            </div>
+          </div>
+        </header>
+        <div id="chatMessages" class="chat-messages"></div>
+        <p class="status" id="chatStatus"></p>
+        <form id="chatForm" class="chat-input">
+          <input type="text" id="chatText" placeholder="Say something" />
+          <input type="file" id="chatImage" accept="image/*" hidden />
+          <button type="button" id="imageBtn" class="icon-button" title="Send image">📷</button>
+          <button type="button" id="recordBtn" class="icon-button" title="Record audio">🎤</button>
+          <button type="submit" class="primary">Send</button>
+        </form>
+      </section>
+    </template>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
